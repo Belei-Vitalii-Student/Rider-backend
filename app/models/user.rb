@@ -6,6 +6,7 @@ class User
   field :name, type: String
   field :username, type: String
 
+  
 
 
 end

@@ -3,5 +3,6 @@ class HomeController < ApplicationController
   end
 
   def mongo
+    @user = User.first
   end
 end
