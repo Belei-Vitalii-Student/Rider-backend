@@ -2,21 +2,23 @@ class Place
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  Coordinate = Struct.new(:lat, :lon)
+
   field :title, type: String
   field :description, type: String
   field :image_urls, type: Array
   field :coordinate, type: Coordinate
+  field :type, type: Enums::PlaceType
 
-  belongs_to :user
+  # belongs_to :user
   
 
-  Coordinate = Struct.new(:lat, :lon)
 
-  enum type: {
-    workshop: 0,
-    food: 1,
-    rest: 2,
-  }
+  # enum type: {
+  #   workshop: 0,
+  #   food: 1,
+  #   rest: 2,
+  # }
 
   TYPES = {
     workshop: {
