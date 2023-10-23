@@ -3,6 +3,9 @@ class HomeController < ApplicationController
   end
 
   def mongo
-    @user = User.first
+    @user = User.create(
+      username: "STUDENT",
+      places: [Place.new(title: "Title", description: "DESC", image_urls: ["path/to/image.png"], coordinate: {lat: 22.455365, lng: 24.5353}, type: "food")]
+      )
   end
 end

@@ -6,7 +6,8 @@ class User
   field :name, type: String
   field :username, type: String
 
-  
-
+  has_many :paths
+  has_many :places
+  has_many :traffic_lights
 
 end

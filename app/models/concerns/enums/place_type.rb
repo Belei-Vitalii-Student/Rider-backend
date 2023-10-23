@@ -1,8 +1,9 @@
-class Enums::PlaceType 
+class Enums::PlaceType
     extend MongoEnum
 
     MAPPING = {
-        'admin' => 0,
-        'user' => 1,
+        'workshop' => 0,
+        'food' => 1,
+        'rest' => 2
     }.freeze
 end

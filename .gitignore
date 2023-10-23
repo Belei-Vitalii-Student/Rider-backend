@@ -35,6 +35,6 @@
 /config/master.key
 
 # My ignore
+.env
 /.env
-!/.env
 
