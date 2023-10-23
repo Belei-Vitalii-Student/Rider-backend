@@ -37,4 +37,5 @@
 # My ignore
 .env
 /.env
+!/.env
 
