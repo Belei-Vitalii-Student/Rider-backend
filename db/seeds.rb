@@ -1,58 +1,40 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
-
-user.paths[0].points[0].lat
-
-user: {
-    ...
+User.create(
+    email: "simple@email.com",
+    name: "Vitalii", 
+    username: "Userlocal", 
+    places: [
+        Place.create(
+            title: "My title", 
+            description: "Description of place", 
+            image_urls: ["url1", "url2"], 
+            coordinate: {lat: 22.44, lng: 23.222222242535335}, 
+            type: "food",
+        )
+    ],
     paths: [
-        {
+        Path.create(
             coordinates: [
-                [lat, lng]
-                [lat, lng]
-            ]
-        }
+                {lat: 22.553566, lng: 25.463637},
+                {lat: 22.646475, lng: 25.5325235},
+                {lat: 22.112, lng: 25.656},
+                {lat: 22.3568, lng: 25.44423},
+                {lat: 22.3325, lng: 25.2245},
+                {lat: 22.3331, lng: 25.78686},
+                {lat: 22.57979, lng: 25.12414},
+            ],
+            user: "6538c90a8f23602c5076c7c9"
+        )
+    ],
+    traffic_lights: [
+        TrafficLight.create(coordinate: {lat: 24.55363, lng: 22.253465546}),
+        TrafficLight.new(coordinate: {lat: 25.12424, lng: 23.245}),
+        TrafficLight.new(coordinate: {lat: 24.222, lng: 25.3567}),
+        TrafficLight.new(coordinate: {lat: 21.25325, lng: 23.3526}),
     ]
-}
-class user
-    has_many :pathes
-end
+)
 
-user.pathes.first.points
-place.icon
-# column: integer
-class Path
-    # coordinates: []
-    enum type {
-        workshop: 0,
-        dinner: 10
-        ...
-    }
 
-    TYPES = {
-        workshop: {
-            icon: 'asdas',
-            description: []
-        },
-        ...
-    }
-
-    def icon
-        TYPES[type][:icon]
-    end
-
-    
-    Coordinate = Struct.new(:lat, :lon)
-
-    def points
-        # [[:lat, :lon], [:lat, :lon]]
-      _read_attribute(:coordinates).map { |c| Coordinate.new(c[0], c[-1]) }
-    end
-end
-
+User.create(
+    email: "simple@email.com", 
+    name: "Vitalii", 
+    username: "Userlocal")
