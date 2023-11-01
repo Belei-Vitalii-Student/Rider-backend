@@ -4,6 +4,7 @@ class Enums::PlaceType
     MAPPING = {
         'workshop' => 0,
         'food' => 1,
-        'rest' => 2
+        'rest' => 2,
+        'parking' => 3
     }.freeze
 end

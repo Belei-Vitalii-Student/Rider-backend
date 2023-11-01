@@ -22,6 +22,10 @@ gem 'dotenv', '~> 2.8', '>= 2.8.1'
 
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
+gem 'graphql'
+gem 'graphql-ruby'
+gem 'graphiql-rails'
+
 
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -73,4 +77,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
+gem "graphiql-rails", group: :development

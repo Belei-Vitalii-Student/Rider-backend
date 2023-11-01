@@ -2,7 +2,7 @@ class TrafficLight
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  Coordinate = Struct.new(:lat, :lon)
+  Coordinate = Struct.new(:lat, :lng)
 
   field :coordinate, type: Coordinate
 
