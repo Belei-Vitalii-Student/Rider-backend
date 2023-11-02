@@ -15,16 +15,13 @@ gem "sqlite3", "~> 1.4"
 
 
 gem 'mongo', '~> 2.19', '>= 2.19.1'
-
 gem 'mongoid', '~> 8.1', '>= 8.1.2'
 
 gem 'dotenv', '~> 2.8', '>= 2.8.1'
 
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
-gem 'graphql'
-gem 'graphql-ruby'
-gem 'graphiql-rails'
+gem 'graphql', '~> 2.1', '>= 2.1.6'
 
 
 

@@ -98,9 +98,8 @@ GEM
     graphiql-rails (1.9.0)
       railties
       sprockets-rails
-    graphql (2.1.5)
+    graphql (2.1.6)
       racc (~> 1.4)
-    graphql-ruby (9001.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -238,8 +237,7 @@ DEPENDENCIES
   dotenv (~> 2.8, >= 2.8.1)
   dotenv-rails (~> 2.8, >= 2.8.1)
   graphiql-rails
-  graphql
-  graphql-ruby
+  graphql (~> 2.1, >= 2.1.6)
   importmap-rails
   jbuilder
   mongo (~> 2.19, >= 2.19.1)

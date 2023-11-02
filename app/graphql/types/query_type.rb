@@ -28,10 +28,16 @@ module Types
       "Hello World!"
     end
 
-    field :user, String, null: false,
-      description: "An example field added by the generator"
-    def user
-      UserType
+    field :users, [Types::UserType], null: false, description: "Return users"
+    def users
+      User.all()
+    end
+
+    field :user, Types::UserType, null: true do
+      argument :id, ID, required: true
+    end
+    def user(id:)
+      User.find(id)
     end
   end
 end
