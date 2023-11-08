@@ -9,14 +9,14 @@ module Types
     end
     field :addPath, Types::PathType, null: false, description: "New path" do
       argument :user, String, required: true
-      argument :coordinates, [Inputs::CoordinateInput], required: true
+      argument :coordinates, [Types::JsonType], required: true
     end
     field :addPlace, Types::PlaceType, null: false, description: "New place" do
       argument :user, String, required: true
       argument :title, String, required: true
       argument :description, String, required: false
       argument :image_urls, [String], required: false
-      argument :coordinate, Inputs::CoordinateInput, required: true
+      argument :coordinate, Types::JsonType, required: true
       argument :type, String, required: true
     end
 
