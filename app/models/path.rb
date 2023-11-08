@@ -4,7 +4,7 @@ class Path
 
   field :coordinates, type: Array
 
-  belongs_to :user
+  belongs_to :user, required: true
 
   validates_each :coordinates do |record, attr, value|
     if !value.present? || !value.kind_of?(Array)

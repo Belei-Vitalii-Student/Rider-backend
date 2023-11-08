@@ -6,5 +6,7 @@ module Types
     field :image_urls, [String], null: true
     field :coordinate, Types::CoordinateType, null: true
     field :type, String, null: true
+
+    field :user, Types::UserType, null: false
   end
 end

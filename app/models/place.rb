@@ -10,7 +10,7 @@ class Place
   field :coordinate, type: Coordinate
   field :type, type: Enums::PlaceType
 
-  belongs_to :user
+  belongs_to :user, required: true
 
   TYPES = {
     workshop: {

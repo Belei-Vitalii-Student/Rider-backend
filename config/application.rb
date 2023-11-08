@@ -13,6 +13,7 @@ module RiderApp
     config.eager_load_paths << Rails.root.join('lib')
 
     config.generators { |g| g.orm :mongoid }
+    config.mongoid.logger.level = Logger::INFO
 
     # Configuration for the application, engines, and railties goes here.
     #

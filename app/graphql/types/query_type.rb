@@ -21,23 +21,63 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
-    end
-
     field :users, [Types::UserType], null: false, description: "Return users"
-    def users
-      User.all()
-    end
-
     field :user, Types::UserType, null: true do
       argument :id, ID, required: true
     end
+    field :places, [Types::PlaceType], null: true, description: "Return places" do
+      argument :type, String, required: false
+    end
+    field :place, Types::PlaceType, null: true, description: "Return place by id" do
+      argument :id, ID, required: true
+    end
+    field :paths, [Types::PathType], null: true, description: "Return paths"
+    field :path, Types::PathType, null: true, description: "Return path by id" do
+      argument :id, ID, required: true
+    end
+    field :traffic_lights, [Types::TrafficLightType], null: true, description: "Return traffic lights"
+    field :traffic_light, Types::TrafficLightType, null: true, description: "Return traffic light by id" do
+      argument :id, ID, required: true
+    end
+
+    def users
+      User.all
+    end
+
     def user(id:)
       User.find(id)
     end
+
+
+    def places(type: nil)
+      if type
+        Place.where(type: type)
+      else
+        Place.all
+      end
+    end
+
+    def place(id:)
+      Place.find(id)
+    end
+
+
+    def paths
+      Path.all
+    end
+
+    def path(id:)
+      Path.find(id)
+    end
+
+
+    def traffic_lights
+      TrafficLight.all
+    end
+
+    def traffic_light(id:)
+      TrafficLight.find(id)
+    end
+
   end
 end

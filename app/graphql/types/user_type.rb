@@ -7,6 +7,6 @@ module Types
 
     field :paths, [PathType], null: true
     field :places, [PlaceType], null: true
-    # field :traffic_lights, [TrafficLightType], null: true
+    field :traffic_lights, [TrafficLightType], null: true
   end
 end
