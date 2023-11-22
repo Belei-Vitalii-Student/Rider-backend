@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get '/mongo', to: 'home#mongo'
   get '/home', to: 'home#index'
+  get '/auth', to: 'google_auth#validate_access_token'
 end
