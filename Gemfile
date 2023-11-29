@@ -24,7 +24,7 @@ gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 gem 'graphql', '~> 2.1', '>= 2.1.6'
 
 gem 'googleauth', '~> 1.8', '>= 1.8.1'
-gem 'google-auth-token_validator'
+gem 'google-api-client', '~> 0.53.0'
 
 
 

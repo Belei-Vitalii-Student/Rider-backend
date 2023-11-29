@@ -16,19 +16,27 @@ class GoogleAuthController < ApplicationController
     # end
 
     def validate_access_token
-        require "googleauth/token_validator"
 
-        client_id = "1024586643840-jqsukd4hk5e9gpiqdu7fqfkn0echtbt6.apps.googleusercontent.com"
-        id_token = "ya29.a0AfB_byDauZQUha7q7nCnYcPrOCDtADt01ButgK11ZtP1xbBEFFE5-Hb2oGGDRAQ_bBmB80tA6Kyjb2uSky_UI93bM3OS5keMbyFSWS9Tun0O5GNxBvZ0XIRcpTXQd04OTpk-DTqydcBIjl6PUMKaJuqipaNXikOlZgaCgYKAZQSARISFQHGX2Mifjmr3gLSlJLEalL-dcFN0Q0169"
 
-        begin
-            valid = Google::Auth::TokenValidator.new(id_token, client_id).validate
-        rescue Google::Auth::TokenValidator::Error => e
-            puts e.message
-            valid = false
-        end
+        # Set your Google client ID and client secret
+        client_id = ENV['GOOGLE_CLIENT_ID']
+        client_secret = ENV['GOOGLE_CLIENT_SECRET']
 
-        puts "STATUS: #{valid}"
+        # Create a Google OAuth client
+        auth = Google::Auth::Client.new(
+          client_id: client_id,
+          client_secret: client_secret,
+          scope: Google::Apis::Oauth2V2::AUTH_USERINFO
+        )
+
+        # Get the access token from the request or session
+        access_token = request.headers['Authorization']&.gsub(/bearer /i, '')
+        puts "TOKEN: #{access_token}"
+
+        # Verify the token using the auth client
+        token = auth.get_access_token(access_token: access_token)
+
+        puts token.valid?
     end
 
 end
