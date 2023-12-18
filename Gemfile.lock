@@ -287,7 +287,7 @@ DEPENDENCIES
   debug
   dotenv (~> 2.8, >= 2.8.1)
   dotenv-rails (~> 2.8, >= 2.8.1)
-  google-api-client (~> 0.53.0)
+  google-api-client
   googleauth (~> 1.8, >= 1.8.1)
   graphiql-rails
   graphql (~> 2.1, >= 2.1.6)
