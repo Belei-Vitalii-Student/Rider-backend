@@ -14,7 +14,12 @@ module RiderApp
 
     config.generators { |g| g.orm :mongoid }
     config.mongoid.logger.level = Logger::INFO
-
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:5173'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

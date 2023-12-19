@@ -16,15 +16,13 @@ gem "sqlite3", "~> 1.4"
 
 gem 'mongo', '~> 2.19', '>= 2.19.1'
 gem 'mongoid', '~> 8.1', '>= 8.1.2'
-
 gem 'dotenv', '~> 2.8', '>= 2.8.1'
-
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
-
 gem 'graphql', '~> 2.1', '>= 2.1.6'
-
 gem 'googleauth', '~> 1.8', '>= 1.8.1'
 gem 'google-api-client', require: 'google/apis/oauth2_v2'
+gem 'jwt'
+gem 'rack-cors'
 # gem 'google-api-client', '~> 0.53.0'
 
 
