@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+
+
 module Types
   class MutationType < Types::BaseObject
     field :addUser, Types::UserType, null: false, description: "New user" do
@@ -7,31 +9,52 @@ module Types
       argument :name, String, required: true
       argument :username, String, required: false
     end
-    field :addPath, Types::PathType, null: false, description: "New path" do
-      argument :user, String, required: true
-      argument :coordinates, [Types::JsonType], required: true
+    field :addFeedback, Types::FeedbackType, null: true, description: "Create a new feedback" do
+      argument :description, String, required: true
+      argument :feedback, String, required: true
+      argument :poi_id, ID, required: true
+      argument :user_id, ID, required: true
     end
-    field :addPlace, Types::PlaceType, null: false, description: "New place" do
-      argument :user, String, required: true
+    field :addPoi, PoiType, null: false, description: "Add a new Point of Interest" do
       argument :title, String, required: true
       argument :description, String, required: false
       argument :image_urls, [String], required: false
-      argument :coordinate, Types::JsonType, required: true
+      argument :coordinates, [Inputs::CoordinateInput], required: true
       argument :type, String, required: true
+      argument :types, [String], required: false
+      argument :user_id, ID, required: true
     end
 
     def addUser(email:, name:, username: nil)
       User.create(email: email, name: name, username: username)
     end
 
-    def addPath(user:, coordinates:)
-      puts "------COORDINATES-------"
-      puts coordinates.inspect
-      Path.create(user: user, coordinates: coordinates)
+    def addFeedback(description:, feedback:, poi_id:, user_id:)
+      poi = Poi.find(poi_id)
+      user = User.find(user_id)
+
+      Feedback.create!(
+        description: description,
+        feedback: feedback,
+        poi: poi,
+        user: user,
+      )
     end
 
-    def addPlace(user:, title:, description: nil, image_urls: [], coordinate:, type:)
-      Place.create(user: user, title: title, description: description, image_urls: image_urls, coordinate: coordinate, type: type)
+    def addPoi(title:, description: nil, image_urls: [], coordinates:, type:, types:, user_id:)
+      coordinatesData = coordinates.map { |c| { lat: c.lat, lng: c.lng } }
+
+      poi = Poi.create!(
+        title: title,
+        description: description,
+        image_urls: image_urls,
+        coordinates: coordinatesData,
+        type: type,
+        types: types,
+        user_id: user_id
+      )
+
+      poi
     end
 
   end

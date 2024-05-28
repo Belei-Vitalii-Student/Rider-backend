@@ -5,8 +5,7 @@ module Types
     field :name, String, null: true, description: "User's name"
     field :username, String, null: true, description: "User's username"
 
-    field :paths, [PathType], null: true
-    field :places, [PlaceType], null: true
-    field :traffic_lights, [TrafficLightType], null: true
+    field :pois, [Types::PoiType], null: true
+    field :feedbacks, [Types::FeedbackType], null: true
   end
 end
