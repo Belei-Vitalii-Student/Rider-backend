@@ -17,7 +17,7 @@ module RiderApp
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         # origins "/.*\.ngrok-free\.app/" "http://localhost:5173"
-        origins "http://localhost:5173"
+        origins "https://d3b7-91-243-13-154.ngrok-free.app", "http://localhost:5173"
         resource '*',
           headers: :any,
           methods: [:get, :post, :put, :patch, :delete, :options, :head],

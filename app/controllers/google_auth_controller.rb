@@ -9,10 +9,12 @@ class GoogleAuthController < ApplicationController
         key_source = Google::Auth::IDTokens::JwkHttpKeySource.new('https://www.googleapis.com/oauth2/v3/certs')
         verifier = Google::Auth::IDTokens::Verifier.new(key_source: key_source)
         payload = verifier.verify(token)
+        puts "PAYLOAD", payload
         user = User.where(email: payload['email']).first_or_initialize
         if user.new_record?
           user.name = payload['name']
           user.username = payload['email'].split('@').first
+          user.picture = payload['picture']
           user.save!
           puts "NEW USER"
         end

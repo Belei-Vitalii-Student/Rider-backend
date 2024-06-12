@@ -19,7 +19,7 @@ module Types
     field :user, Types::UserType, null: false
     field :feedbacks, [Types::FeedbackType], null: true
 
-        def likes
+    def likes
       object.feedbacks.count { |feedback| feedback.feedback == 'like' }
     end
 
